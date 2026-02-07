@@ -11,7 +11,7 @@ import java.util.List;
 public class PizzaOrderServiceImpl implements PizzaOrderService {
 
     private final List<PizzaOrder> orders = new ArrayList<>();
-    private long idCounter = 1;
+    private int idCounter = 1;
 
     @Override
     public PizzaOrder placeOrder(PizzaOrder order) {

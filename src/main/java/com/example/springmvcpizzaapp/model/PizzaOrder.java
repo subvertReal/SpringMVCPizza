@@ -49,10 +49,10 @@ public class PizzaOrder {
 
     // getters and setters
     public void setOrderTime(LocalDateTime now) {
-        this.orderTime = orderTime;
+        this.orderTime = now;
     }
 
-    public void setId(long l) {
+    public void setId(int id) {
         this.id = id;
     }
 }
