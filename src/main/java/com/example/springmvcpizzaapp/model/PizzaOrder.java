@@ -55,4 +55,64 @@ public class PizzaOrder {
     public void setId(int id) {
         this.id = id;
     }
+
+
+    public String getCustName() {
+        return custName;
+    }
+
+    public void setCustName(String custName) {
+        this.custName = custName;
+    }
+
+    public void  setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+    public PizzaSize getSize() {
+        return size;
+    }
+
+    public PizzaToppings getTopping() {
+        return topping;
+    }
+
+    public PizzaCrust getCrust() {
+        return crust;
+    }
+
+    public boolean isDoDelivery() {
+        return doDelivery;
+    }
+
+    public String getDeliveryAddress() {
+        return deliveryAddress;
+    }
+
+
+
+
+    public void setDoDelivery(boolean doDelivery) {
+        this.doDelivery = doDelivery;
+    }
+    public void setDeliveryAddress(String deliveryAddress) {
+        this.deliveryAddress = deliveryAddress;
+    }
+
+    public void setPizzaSize(PizzaSize size) {
+        this.size = size;
+    }
+
+    public void setPizzaToppings(PizzaToppings topping) {
+        this.topping = topping;
+    }
+
+    public void setPizzaCrust(PizzaCrust crust) {
+        this.crust = crust;
+    }
+
+
 }
