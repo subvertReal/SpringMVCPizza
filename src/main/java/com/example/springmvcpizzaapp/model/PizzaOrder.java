@@ -2,6 +2,8 @@ package com.example.springmvcpizzaapp.model;
 
 import jakarta.validation.constraints.*;
 
+import java.time.LocalDateTime;
+
 public class PizzaOrder {
     // Basic info
     private int id;
@@ -9,21 +11,23 @@ public class PizzaOrder {
     @NotBlank(message = "Please enter your name")
     private String custName;
 
+    private LocalDateTime orderTime;
+
     // quantity info
-    @NotBlank
-    @Min(value = 1, message = "The quanitity must be 1 to 100")
-    @Max(value = 10, message = "The quanitity must be 1 to 100")
+
+    @Min(value = 1, message = "The quanitity must be 1 to 10")
+    @Max(value = 10, message = "The quanitity must be 1 to 10")
     private int quantity;
 
     // delivery info
     private boolean doDelivery;
-    private String deliveryAddre; // only request if doDelivery == TRUE
+    private String deliveryAddress; // only request if doDelivery == TRUE
 
     // if doDelivery == true, make sure there is a delivery address entered
     @AssertTrue(message = "Delivery address is required if delivery is selected")
     public boolean isDeliveryAddressValid() {
         if (doDelivery) {
-            return deliveryAddre != null && !deliveryAddre.isBlank();
+            return deliveryAddress != null && !deliveryAddress.isBlank();
         }
         return true;
     }
@@ -40,6 +44,15 @@ public class PizzaOrder {
     @NotNull(message = "Please enter a pizza topping to add")
     private PizzaToppings topping;
     @NotNull(message = "Please enter a pizza crust to add")
-    private PizzaOrder crust;
+    private PizzaCrust crust;
 
+
+    // getters and setters
+    public void setOrderTime(LocalDateTime now) {
+        this.orderTime = orderTime;
+    }
+
+    public void setId(long l) {
+        this.id = id;
+    }
 }

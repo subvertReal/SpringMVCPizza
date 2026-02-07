@@ -1,4 +1,32 @@
 package com.example.springmvcpizzaapp.service;
 
-public class PizzaOrderServiceImpl {
+import com.example.springmvcpizzaapp.model.PizzaOrder;
+import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+@Service
+public class PizzaOrderServiceImpl implements PizzaOrderService {
+
+    private final List<PizzaOrder> orders = new ArrayList<>();
+    private long idCounter = 1;
+
+    @Override
+    public PizzaOrder placeOrder(PizzaOrder order) {
+
+        order.setId(idCounter++);
+        order.setOrderTime(LocalDateTime.now());
+
+        // Pricing rules here later
+
+        orders.add(order);
+        return order;
+    }
+
+    @Override
+    public List<PizzaOrder> getOrderHistory() {
+        return orders;
+    }
 }
