@@ -1,10 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>History of Your Orders</title>
 </head>
 <body>
+<h1>History of Your Orders</h1>
+
+<tr th:each="order : ${orders}">
+<!--    <td th:text="'ID of Order: '+ ${order.id}"></td>-->
+    <td th:text="'Name of Customer: ' + ${order.custName}"></td>
+    <br>
+    <td th:text="'Pizza Quanitity: ' + ${order.quantity}"></td>
+    <br>
+    <td th:text="'Size of Pizza: ' + ${order.size}"></td>
+    <br>
+    <td th:text="'Crust of Pizza: ' + ${order.crust}"></td>
+    <br>
+    <td th:text="'Topping of Pizza: ' + ${order.topping}"></td>
+    <br>
+    <td th:text="'To be delivered?: ' + ${order.doDelivery ? 'Yes' : 'No'}"></td>
+    <br>
+    <td th:text="'Subtotal ' + ${order.subTotal}"></td>
+    <br>
+    <td th:text="'Discount' + ${order.discountAmount}"></td>
+    <br>
+    <td th:text="'Total ' + ${order.finalTotal}"></td>
+    <br>
+    <br>
+    <br>
+
+
+</tr>
+
+<br>
+</tr>
+
+
 
 </body>
 </html>
