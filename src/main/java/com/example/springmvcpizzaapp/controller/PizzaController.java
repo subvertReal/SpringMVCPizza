@@ -20,10 +20,13 @@ public class PizzaController {
     @GetMapping("/")
     public String showForm(Model model) {
 
+        int a = 0;
         model.addAttribute("pizzaOrder", new PizzaOrder());
-        model.addAttribute("sizes", PizzaSize.values());
+        model.addAttribute("sizes", a);
         model.addAttribute("crusts", PizzaCrust.values());
         model.addAttribute("toppings", PizzaToppings.values());
+
+
 
         return "OrderForm";
     }
@@ -41,6 +44,9 @@ public class PizzaController {
             return "OrderForm";
         }
 
+
+//        System.out.println("Crust: " + pizzaOrder.getCrust());
+//        System.out.println("Topping: " + pizzaOrder.getTopping());
         model.addAttribute("order", service.placeOrder(pizzaOrder));
         return "Summary";
     }

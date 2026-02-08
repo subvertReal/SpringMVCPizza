@@ -35,11 +35,8 @@
     <div>
         <label>Size:</label>
         <select th:field="*{size}">
-            <option value="">-- Select Size --</option>
-            <option th:each="s : ${sizes}"
-                    th:value="${s}"
-                    th:text="${s}">
-            </option>
+            <option value="" disabled selected>-- Select Size --</option> <!-- placeholder -->
+            <option th:each="s : ${sizes}" th:value="${s}" th:text="${s}"></option>
         </select>
         <div class="error" th:if="${#fields.hasErrors('size')}"
              th:errors="*{size}"></div>

@@ -16,12 +16,14 @@ public class PizzaOrderServiceImpl implements PizzaOrderService {
     @Override
     public PizzaOrder placeOrder(PizzaOrder order) {
 
+
         order.setId(idCounter++);
         order.setOrderTime(LocalDateTime.now());
 
-        // Pricing rules here later
+
 
         orders.add(order);
+        System.out.println("Order: " + order.getTaxes());
         return order;
     }
 

@@ -1,10 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <title>Order Summary</title>
     <meta charset="UTF-8">
-    <title>Title</title>
 </head>
 <body>
+
+<h1>Your Order Summary</h1>
+
+<p><strong>Name:</strong> <span th:text="${order.custName}"></span></p>
+<p><strong>Quantity:</strong> <span th:text="${order.quantity}"></span></p>
+
+<p><strong>Pizza Size:</strong> <span th:text="${order.size}"></span></p>
+<p><strong>Crust:</strong> <span th:text="${order.crust}"></span></p>
+<p><strong>Topping:</strong> <span th:text="${order.topping}"></span></p>
+
+
+
+<p><strong>Delivery:</strong>
+    <span th:text="${order.doDelivery ? 'Yes' : 'No'}"></span>
+</p>
+
+<div th:if="${order.doDelivery}">
+    <p><strong>Delivery Address:</strong>
+        <span th:text="${order.deliveryAddress}"></span>
+    </p>
+</div>
+
+
+
+<p><strong>Subtotal:</strong> $<span th:text="${order.subTotal}"></span></p>
+<p><strong>Discount:</strong> $<span th:text="${order.discountAmount}"></span></p>
+<p><strong>Tax:</strong> $<span th:text="${order.taxes}"></span></p>
+
+<h2>Total: $<span th:text="${order.finalTotal}"></span></h2>
+
+<br>
+
+<a href="/history">View order history</a>
 
 </body>
 </html>

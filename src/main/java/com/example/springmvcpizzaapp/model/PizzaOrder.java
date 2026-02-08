@@ -15,8 +15,8 @@ public class PizzaOrder {
 
     // quantity info
 
-    @Min(value = 1, message = "The quanitity must be 1 to 10")
-    @Max(value = 10, message = "The quanitity must be 1 to 10")
+    @Min(value = 1, message = "The quantity must be 1 to 10")
+    @Max(value = 10, message = "The quantity must be 1 to 10")
     private int quantity;
 
     // delivery info
@@ -32,20 +32,21 @@ public class PizzaOrder {
         return true;
     }
 
-    // pricing info
-    private double subTotal;
-    private double discountAmount;
-    private double taxes;
-    private double finalTotal;
 
     // info regarding pizza
-    @NotNull(message = "Please enter a pizza size")
+
     private PizzaSize size;
-    @NotNull(message = "Please enter a pizza topping to add")
+
     private PizzaToppings topping;
-    @NotNull(message = "Please enter a pizza crust to add")
+
     private PizzaCrust crust;
 
+    // pricing info
+    private double discountAmount;
+    private double taxes = 0.13;
+
+    private double subTotal;
+    private double finalTotal;
 
     // getters and setters
     public void setOrderTime(LocalDateTime now) {
@@ -69,6 +70,10 @@ public class PizzaOrder {
         this.quantity = quantity;
     }
 
+    public void setCrust(){
+        this.crust = crust;
+    }
+
     public int getQuantity() {
         return quantity;
     }
@@ -84,6 +89,18 @@ public class PizzaOrder {
         return crust;
     }
 
+    public void setSize(PizzaSize size) {
+        this.size = size;
+    }
+
+    public void setTopping(PizzaToppings topping) {
+        this.topping = topping;
+    }
+
+    public void setCrust(PizzaCrust crust) {
+        this.crust = crust;
+    }
+
     public boolean isDoDelivery() {
         return doDelivery;
     }
@@ -92,7 +109,54 @@ public class PizzaOrder {
         return deliveryAddress;
     }
 
+    public double getToppingsPrice(){
+        return 1.25;
+    }
+    public double getDiscountAmount() {
+        return discountAmount;
+    }
 
+    public double getSubTotal() {
+        //size
+        if (getSize() == PizzaSize.SMALL){
+            subTotal = 8.00 + getToppingsPrice();
+        }
+        else if (getSize() == PizzaSize.MEDIUM){
+            subTotal = 10.00 + getToppingsPrice();
+        }
+        else{
+            subTotal = 12.00 + getToppingsPrice();
+        }
+
+        //discount
+        if(quantity > 3){
+            discountAmount = subTotal * 0.1;
+            subTotal = subTotal - discountAmount;
+        }
+
+        //delivery
+        if(doDelivery){
+            subTotal = subTotal+3.99;
+            System.out.println("Price: " + subTotal);
+            return subTotal;
+
+        }
+        else {
+            return subTotal;
+        }
+
+    }
+
+    public double getTaxes() {
+        return taxes;
+    }
+
+    public double getFinalTotal() {
+        subTotal = subTotal + subTotal*taxes;
+
+
+        return subTotal;
+    }
 
 
     public void setDoDelivery(boolean doDelivery) {
