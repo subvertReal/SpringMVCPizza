@@ -32,16 +32,19 @@
     </div>
 
     <!-- Pizza Size -->
+
     <div>
         <label>Size:</label>
         <select th:field="*{size}">
-            <option value="" disabled selected>-- Select Size --</option> <!-- placeholder -->
-            <option th:each="s : ${sizes}" th:value="${s}" th:text="${s}"></option>
+            <option value="">-- Select size --</option>
+            <option th:each="c : ${sizes}"
+                    th:value="${c}"
+                    th:text="${c}">
+            </option>
         </select>
         <div class="error" th:if="${#fields.hasErrors('size')}"
              th:errors="*{size}"></div>
     </div>
-
     <!-- Crust -->
     <div>
         <label>Crust:</label>

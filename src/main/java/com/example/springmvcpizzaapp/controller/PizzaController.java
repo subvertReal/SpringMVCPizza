@@ -22,7 +22,7 @@ public class PizzaController {
 
         int a = 0;
         model.addAttribute("pizzaOrder", new PizzaOrder());
-        model.addAttribute("sizes", a);
+        model.addAttribute("sizes", PizzaSize.values());
         model.addAttribute("crusts", PizzaCrust.values());
         model.addAttribute("toppings", PizzaToppings.values());
 
